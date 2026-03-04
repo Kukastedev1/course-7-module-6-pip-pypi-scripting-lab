@@ -5,8 +5,7 @@ def generate_log(data):
 
     # STEP 1: Validate input
     if not isinstance(data, list):
-        print("Error: data must be a list.")
-        return
+        raise ValueError("Input must be a list")
 
     # STEP 2: Generate filename with today's date
     filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
@@ -16,8 +15,10 @@ def generate_log(data):
         for entry in data:
             file.write(f"{entry}\n")
 
-    # STEP 4: Print confirmation
+    # STEP 4: Print confirmation message
     print(f"Log written to {filename}")
+
+    return filename
 
 
 if __name__ == "__main__":
